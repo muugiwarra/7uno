@@ -24,14 +24,14 @@ public class Comments {
     @ManyToOne
     private Post post;
 
-    public void setText(String text) {
-    }
+
 
     public void setUser(Optional<User> authenticatedUser) {
     }
 
     public void setPost(Optional<Post> post) {
     }
+
 
     @PrePersist
     protected void onCreate() {
@@ -40,7 +40,20 @@ public class Comments {
         }
     }
 
-    public void setCreationDate(LocalDateTime now) {
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }
 

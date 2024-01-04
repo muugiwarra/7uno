@@ -2,7 +2,9 @@ package com.example.uno.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
+
 
 @Entity
 public class User {
@@ -23,9 +25,11 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    // Constructors, getters, setters, and other methods
+    @OneToMany(mappedBy = "sender")
+    private List<Messages> sentMessages;
 
-    // ... (Other fields like profile picture, bio, etc.)
+    @OneToMany(mappedBy = "receiver")
+    private List<Messages> receivedMessages;
 
     @ManyToMany
     @JoinTable(
@@ -56,7 +60,7 @@ public class User {
         this.fullName = fullName;
     }
 
-    public String getPassword() {
+    public  String getPassword() {
         return password;
     }
 
@@ -64,7 +68,7 @@ public class User {
         this.password = password;
     }
 
-    public String getUsername() {
+    public  String getUsername() {
         return username;
     }
 
