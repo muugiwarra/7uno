@@ -51,7 +51,25 @@ public class Comments {
     public void setPost(Post post) {
         this.post = post;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public String getText() {
+        return text;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Post getPost() {
+        return post;
+    }
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }

@@ -33,7 +33,25 @@ public class Messages {
 
     // Constructors, getters, setters, etc.
 
+    public Long getId() {
+        return id;
+    }
 
+    public User getSender() {
+        return sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getSentAt() {
+        return sentAt;
+    }
     public void setContent(String content) {
         this.content = content;
     }
@@ -49,9 +67,7 @@ public class Messages {
     public void setSentAt(LocalDateTime sentAt) {
         this.sentAt = sentAt;
     }
-    public String getContent() {
-        return content;
-    }
+
     @Override
     public String toString() {
         return "Messages{" +

@@ -17,13 +17,15 @@ import java.util.Optional;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final UserService userService;
     private static final Logger log = LoggerFactory.getLogger(PostService.class);
 
 
 
     @Autowired
-    public PostService(PostRepository postRepository) {
+    public PostService(PostRepository postRepository,UserService userService) {
         this.postRepository = postRepository;
+        this.userService = userService;
     }
 
     public Post savePost(Post post) {
@@ -41,7 +43,8 @@ public class PostService {
         return postRepository.findById(postId);
     }
 
-    public List<Post> getPostsByUser(User user) {
+    public List<Post> getPostsByUser(String username) {
+        User user = userService.getUserByUsername(username);
         return postRepository.findByUser(user);
     }
     @Transactional
@@ -61,5 +64,7 @@ public class PostService {
     }
 
 
-
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
+    }
 }

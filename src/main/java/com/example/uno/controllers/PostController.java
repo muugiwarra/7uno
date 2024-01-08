@@ -93,10 +93,17 @@ public class PostController {
             }
         } else {
             // If postId is not provided, retrieve all posts for the given user
-            List<Post> posts = postService.getPostsByUser(user);
+            List<Post> posts = postService.getPostsByUser(username);
             return ResponseEntity.ok(posts);
         }
     }
+
+    @GetMapping("/get_posts")
+    public ResponseEntity<List<Post>> retrieveAllPosts() {
+        List<Post> allPosts = postService.getAllPosts();
+        return ResponseEntity.ok(allPosts);
+    }
+
 
 
 
